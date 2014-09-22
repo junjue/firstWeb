@@ -110,10 +110,13 @@
             }
 
 .logo {
-    top: 50px;
-    margin-left: 150px;
+    top: 80px;
 }
 
+.imagestyle {
+    width: 200px;
+    height: 200px;
+}
 
 .main {
     border: 1px solid transparent;
@@ -126,11 +129,6 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
-    margin: 10px;
-}
-
-.screen {
-    width: 980px;
 }
 
 .textfont {
@@ -165,13 +163,13 @@
     height: 36px;
     line-height: 36px;
     width: 89px;
-    text-decoration:none;
+    text-decoration: none;
     text-align: center;
 }
 
     .buttonpink:hover {
         background-color: #A0CAB5;
-        zoom:150%;
+        zoom: 150%;
     }
 
     .buttonpink:active {

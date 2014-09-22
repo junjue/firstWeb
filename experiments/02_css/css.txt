@@ -1,0 +1,3 @@
+﻿../../story/whatisnext.htm?../experiments/02_css/css.txt	What is Next?
+001_hover.html							CSS Hover
+css.txt								The story file for this story

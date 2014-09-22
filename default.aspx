@@ -6,19 +6,15 @@
     <meta charset='utf-8' />
     <title>Junjue's HomePage</title>
     <link rel="stylesheet" href="css/homepage.css" />
-    <style type="text/css" media="screen">
-        .pad {
-            padding: 10px;
-        }
-    </style>
+
 </head>
 
 <body class="screen">
 
 
-    <div class="pad" id='menubar'>
+    <div id='menubar'>
         <ul>
-            <li class='active'><a href='#'><span>Home</span></a></li>
+            <li class='active'><a href='#'><span>CS5610 HOME</span></a></li>
             <li><a href="sitestatistics/" target="_blank">SiteStatistics</a></li>
             <li><a href="statistics/" target="_blank">Statistics</a></li>
             <li><a href="source/" target="_blank">Source</a></li>
@@ -31,13 +27,13 @@
         </ul>
     </div>
     <div class="main">
-        <div class="logo">
+        <div class="logo" align="center">
             <a href="story/index.htm?../experiments/experiments-story.txt">
-                <img class="logoimg" src="images/image/e.png" onmouseover="this.src='images/image/experiment.png'" onmouseout="this.src='images/image/e.png'" style="width: 200px; height: 200px" /></a>
+                <img class="imagestyle" src="images/image/e.png" onmouseover="this.src='images/image/experiment.png'" onmouseout="this.src='images/image/e.png'"  /></a>
             <a href="story/index.htm?../project/project-story.txt">
-                <img class="logoimg" src="images/image/p.png" onmouseover="this.src='images/image/project.png'" onmouseout="this.src='images/image/p.png'" style="width: 200px; height: 200px" /></a>
+                <img class="imagestyle" src="images/image/p.png" onmouseover="this.src='images/image/project.png'" onmouseout="this.src='images/image/p.png'" /></a>
             <a href="blog/">
-                <img class="logoimg" src="images/image/b.png" onmouseover="this.src='images/image/blog.png'" onmouseout="this.src='images/image/b.png'" style="width: 200px; height: 200px" /></a>
+                <img class="imagestyle" src="images/image/b.png" onmouseover="this.src='images/image/blog.png'" onmouseout="this.src='images/image/b.png'" /></a>
 
         </div>
         <div>
@@ -52,8 +48,6 @@
                 <a href="mailto:junjue@ccs.neu.edu?Subject=hi" target="_top" class="buttonpink textfont">Contact Me</a>
             </div>
         </div>
-
-
     </div>
 </body>
 </html>
