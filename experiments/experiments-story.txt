@@ -1,0 +1,7 @@
+﻿../story/whatisnext.htm?../experiments/experiments-story.txt		What is Next?
+../story/index.htm?../experiments/01_html/html.txt			HTML
+../story/index.htm?../experiments/02_angular/angular.txt		Angular
+../story/index.htm?../experiments/1_html/1_html.txt			HTML_OLD
+../story/index.htm?../experiments/2_css/2_css.txt			CSS_OLD
+../story/index.htm?../experiments/3_bootstrap/3_bootstrap.txt		BOOTSTRAP_OLD
+experiments-story.txt                                                   The story file for this story

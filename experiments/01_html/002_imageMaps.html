@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>image_maps</title>
+    <style>
+        .showcode {
+            background-color: #F5F9FF;
+        }
+
+        .showref {
+            background-color: #FFF5FF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Maps</h1>
+    <a href="../../fileview/Default.aspx?~/experiments/01_html/002_imageMaps.html">Page scource</a>
+    <hr />
+    <p>Click on the head of panda or the pocky to watch it closer.</p>
+    <img src="../../images/image/panda_pocky.jpg" alt="panda&pocky" usemap="#pandapocky" style="width:400px;height:400px" />
+    <map name="pandapocky">
+        <area shape="circle" coords="205,105,110" alt="panda" href="../../images/image/panda.png" />
+        <area shape="rect" coords="185,225,230,315" alt="pocky" href="../../images/image/pocky.png" />
+    </map>
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <img src="../../images/image/panda_pocky.jpg" alt="panda&pocky" usemap="#pandapocky" style="width:400px;height:400px" />
+            <map name="pandapocky">
+                <area shape="circle" coords="205,105,110" alt="panda" href="../../images/image/panda.png" />
+                <area shape="rect" coords="185,225,230,315" alt="pocky" href="../../images/image/pocky.png" />
+            </map>
+        </xmp>
+    </div>
+    <hr />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/html/default.asp">W3Schools</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>

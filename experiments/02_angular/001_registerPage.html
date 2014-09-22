@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>001_registerPage</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <style>
+        .center {
+            left: 150px;
+            width: 800px;
+            margin: 100px;
+        }
+
+        .showcode {
+            background-color: #F5F9FF;
+        }
+
+        .showref {
+            background-color: #FFF5FF;
+        }
+    </style>
+    <script src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="../js/registerPage.js"></script>
+</head>
+
+<body ng-app="register">
+
+    <div class="header">
+        <h1>Register Page</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/02_angular/001_registerPage.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/js/registerPage.js">Java Script scource</a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+
+    <div class="container center" ng-controller="RegisterController" ng-submit="submit()">
+
+        <table class="table">
+            <thead>
+                Step 1: Please enter your information.
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <input ng-model="user.name.first" type="text" class="form-control" placeholder="Full Name" />
+                            </div>
+                            <div class="col-sm-7">
+                                <input ng-model="user.name.last" type="text" class="form-control" placeholder="Last Name" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <!--<input ng-model="femaleGender" type="text" name="gender" id="femaleGender" />
+                        <label for="femaleGender">Female</label>
+                        <input ng-model="maleGender" type="text" name="gender" id="maleGender" />
+                        <label for="maleGender">Male</label>
+                        <input ng-model="notSureGender" type="text" name="gender" id="notSureGender" />
+                        <label for="notSureGender">Not Sure</label>
+                        -->
+                        <input ng-model="user.gender" type="text" class="form-control" placeholder="Gender" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Day of Birth</td>
+                    <td>
+                        <input ng-model="user.dob" type="text" class="form-control" placeholder="Birthday" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <input ng-model="user.email" type="text" class="form-control" placeholder="Email address" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form ng-submit="submit()">
+            <!--<button ng-click=" cleardata" class="btn btn-danger">Clear</button>-->
+            <button type="submit" id="submit" class="btn btn-success" value="Submit">Submit</button>
+            <pre>list={{list}}</pre>
+        </form>
+        <br />
+        <hr />
+        <br />
+
+        <table class="table">
+            <thead>
+                Step 2: Please confirm your information.
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <!-- {{user.name.first + ' ' + user.name.middle + ' ' + user.name.last}}-->
+                        {{list[0]+' '+list[1]}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        {{list[2]}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Day of Birth</td>
+                    <td>
+                        {{list[3]}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        {{list[4]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr />
+    <br />
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+                (function () {
+                    var app = angular.module('register', []);
+                    app.controller('RegisterController', ['$scope', function ($scope) {
+                        $scope.list = [];
+                        $scope.user = {
+                            name: {
+                                first: 'tony',
+                                last: 'wang',
+                            },
+                            gender: 'male',
+                            dob: '1990',
+                            email: 'tony@gmail.com',
+                        };
+                        $scope.submit = function () {
+                            if ($scope.user.name.first) {
+                                $scope.list.push(this.user.name.first);
+                                $scope.user.name.first = '';
+                            }
+                            if ($scope.user.name.last) {
+                                $scope.list.push(this.user.name.last);
+                                $scope.user.name.last = '';
+                            }
+                            if ($scope.user.gender) {
+                                $scope.list.push(this.user.gender);
+                                $scope.user.gender = '';
+                            }
+                            if ($scope.user.dob) {
+                                $scope.list.push(this.user.dob);
+                                $scope.user.dob = '';
+                            }
+                            if ($scope.user.email) {
+                                $scope.list.push(this.user.email);
+                                $scope.user.email = '';
+                            }
+                        };
+                    }]);
+                })();
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/angular/default.asp">W3Schools</a></li>
+        </ul>
+    </div>
+    <hr />
+
+
+</body>
+</html>

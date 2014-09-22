@@ -1,0 +1,4 @@
+﻿../../story/whatisnext.htm?../experiments/01_html/html.txt	What is Next?
+001_attributes.html						Attributes
+002_imageMaps.html						Image Maps
+html.txt							The story file for this story

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>002_orderList</title>
+    <script src="../js/angular.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+</head>
+
+<body ng-app>
+    <div class="row">
+        <div class="container col-sm-5" ng-controller="orderListController">
+            <h1>Order List</h1>
+            <table ng-init="init()" class="table">
+                <thead>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input ng-model="newItem.name" class="form-control" type="text" /></td>
+                        <td><input ng-model="newItem.unit" class="form-control" type="number" /></td>
+                        <td><input ng-model="newItem.qty" class="form-control" type="number" /></td>
+                        <td>&nbsp;</td>
+                        <td><button ng-click="add()" class="btn btn-success">Add</button></td>
+                    </tr>
+                    <tr>
+                        <td>No.</td>
+                        <td>Name</td>
+                        <td>Unit Price</td>
+                        <td>Qty</td>
+                        <td>Price</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>${{item.unit}}</td>
+                        <td>{{item.qty}}</td>
+                        <td>${{item.unit * item.qty}}</td>
+                        <td>
+                            <button ng-click="delete(item)" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>Total:</td>
+                        <td>{{totalQty}}</td>
+                        <td>${{totalPrice}}</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        function orderListController($scope) {
+            var items = [];
+            $scope.init = function () {
+                var item1 = {
+                    name: "Book shelf",
+                    unit: 140,
+                    qty: 1
+                };
+                var item2 = {
+                    name: "Tableware",
+                    unit: 12,
+                    qty: 4
+                };
+                items = [item1, item2];
+                $scope.items = items;
+                $scope.calTotal();
+            }
+            
+            $scope.add = function () {
+                var newItem = {
+                    name: $scope.newItem.name,
+                    unit: $scope.newItem.unit,
+                    qty: $scope.newItem.qty
+                };
+                $scope.items.push(newItem);
+                $scope.calTotal();
+            }
+
+            $scope.delete = function (item) {
+                var index = $scope.items.indexOf(item);
+                $scope.items.splice(index, 1);
+                $scope.calTotal();
+            }
+
+            $scope.calTotal = function () {
+                var totalQty = 0;
+                var totalPrice = 0.00;
+                items.forEach(function (item) {
+                    totalQty += item.qty;
+                    totalPrice += item.unit * item.qty;
+                });
+                $scope.totalQty = totalQty;
+                $scope.totalPrice = totalPrice;
+            }
+        }
+    </script>
+</body>
+</html>

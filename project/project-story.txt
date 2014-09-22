@@ -1,0 +1,2 @@
+﻿../story/whatisnext.htm?../project/project-story.txt				What is Next?
+project-story.txt                                               The story file for this story

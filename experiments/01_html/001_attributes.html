@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>001_html attributes</title>
+    <script src="../js/angular.min.js"></script>
+    <style>
+        .showcode {
+            background-color: #F5F9FF;
+        }
+
+        .showref {
+            background-color: #FFF5FF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Html Attributes</h1>
+    <a href="../../fileview/Default.aspx?~/experiments/01_html/001_attributes.html">Page scource</a>
+    <hr />
+
+    <h2>Title</h2>
+    <p title="title attribute">
+        This is the first experiment of html. I start with html attributes. By using title in a paragraph tag, people could see the contant by moving mouse over it.
+    </p>
+    <p>
+        <b>Move the mouse over the paragraph above, the title will display as a tooltip.</b>
+    </p>
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <p title="title attribute">
+                This is the first experiment of html. I start with html attributes. By using title in a paragraph tag, people could see the contant by moving mouse over it.
+            </p>
+        </xmp>
+    </div>
+    <hr />
+
+    <h2>href</h2>
+    <p>Link address by using href attribute.</p>
+    <a href="http://www.ccs.neu.edu/teaching/web/index.htm">CS 5610 Web Development Home</a>
+    <p>Email me: <a href="mailto:junjue@ccs.neu.edu?Subject=hi" target="_top">junjue@ccs.neu.edu</a></p>
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <a href="http://www.ccs.neu.edu/teaching/web/index.htm">CS 5610 Web Development Home</a>
+            <p>Email me: <a href="mailto:junjue@ccs.neu.edu?Subject=hi" target="_top">junjue@ccs.neu.edu</a></p>
+        </xmp>
+    </div>
+    <hr />
+
+    <h2>Size</h2>
+    <p>Use size attribute to change the size of image.</p>
+    <div ng-app="" ng-controller="sizeController">
+        Width: <input type="number" ng-model="wid" placeholder="enter the width">
+        Height: <input type="number" ng-model="hei" placeholder="enter the height">
+        <br /><br />
+        <img ng-model="imsize" src="../../images/image/about_me.jpg" width={{wid}} height={{hei}}>
+        size: {{wid + "*" + hei}}<br />
+    </div>
+    <script>
+        function sizeController($scope) {
+            $scope.wid = "140";
+            $scope.hei = "140";
+        }
+    </script>
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <div ng-app="" ng-controller="sizeController">
+                Width: <input type="number" ng-model="wid" placeholder="enter the width">
+                Height: <input type="number" ng-model="hei" placeholder="enter the height">
+                <br /><br />
+                <img ng-model="imsize" src="../../images/image/about_me.jpg" width={{wid}} height={{hei}}>
+                size: {{wid + "*" + hei}}<br />
+            </div>
+
+            <script>
+                function sizeController($scope) {
+                    $scope.wid = "140";
+                    $scope.hei = "140";
+                }
+            </script>
+        </xmp>
+
+    </div>
+
+    <hr />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/html/default.asp">W3Schools</a></li>
+        </ul>
+    </div>
+    <hr />
+</body>
+</html>

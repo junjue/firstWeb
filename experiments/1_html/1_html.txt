@@ -1,0 +1,4 @@
+﻿../../story/whatisnext.htm?../experiments/1_html/1_html.txt		What is Next?
+001-head-and-paragraph.html						Head and paragraph
+002-lists.html								Lists
+1_html.txt								The story file for this story

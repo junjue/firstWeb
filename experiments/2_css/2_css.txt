@@ -1,0 +1,9 @@
+﻿../../story/whatisnext.htm?../experiments/2_css/2_css.txt		What is Next?
+001-style-tag.html							Tag
+002-style-element.html							Element
+003-style-element-by-name.html						Element by name
+004-style-element-by-class.html						Element by class
+005-style-element-by-class-organized.html				Organized
+006-style-css-file.html							CSS file
+007-boxModel.html							Box Model
+2_css.txt								The story file for this story

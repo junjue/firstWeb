@@ -1,0 +1,56 @@
+﻿body {
+}
+
+        p {
+            background-color: pink;
+        }
+
+        li {
+            color: blueviolet;
+            background-color: lightyellow;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .bgYellow {
+            background-color: yellow;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .bgGray {
+            background-color: gray;
+        }
+
+        .bgLime {
+            background-color: lime;
+        }
+
+        .orange {
+            color: orange;
+        }
+
+        .lightsteelblue {
+            color: lightsteelblue;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .cyan {
+            color: cyan;
+        }
+
+        .bgLightcyan {
+            background-color: lightcyan;
+        }
+
