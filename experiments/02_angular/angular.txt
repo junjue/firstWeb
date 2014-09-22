@@ -1,3 +1,4 @@
 ﻿../../story/whatisnext.htm?../experiments/02_angular/angular.txt	What is Next?
 001_registerPage.html							Register Page
+002_orderList.html							Order List
 angular.txt								The story file for this story

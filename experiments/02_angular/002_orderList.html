@@ -4,12 +4,23 @@
     <title>002_orderList</title>
     <script src="../js/angular.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+
 </head>
 
 <body ng-app>
     <div class="row">
         <div class="container col-sm-5" ng-controller="orderListController">
             <h1>Order List</h1>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/02_angular/002_orderList.html">Page scource</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+                </li>
+            </ul>
+            <hr />
             <table ng-init="init()" class="table">
                 <thead>
                     <tr>
@@ -52,8 +63,6 @@
             </table>
         </div>
     </div>
-
-
     <script>
         function orderListController($scope) {
             var items = [];
@@ -72,7 +81,7 @@
                 $scope.items = items;
                 $scope.calTotal();
             }
-            
+
             $scope.add = function () {
                 var newItem = {
                     name: $scope.newItem.name,
@@ -101,5 +110,69 @@
             }
         }
     </script>
+    <hr />
+    <br />
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <script>
+                function orderListController($scope) {
+                    var items = [];
+                    $scope.init = function () {
+                        var item1 = {
+                            name: "Book shelf",
+                            unit: 140,
+                            qty: 1
+                        };
+                        var item2 = {
+                            name: "Tableware",
+                            unit: 12,
+                            qty: 4
+                        };
+                        items = [item1, item2];
+                        $scope.items = items;
+                        $scope.calTotal();
+                    }
+
+                    $scope.add = function () {
+                        var newItem = {
+                            name: $scope.newItem.name,
+                            unit: $scope.newItem.unit,
+                            qty: $scope.newItem.qty
+                        };
+                        $scope.items.push(newItem);
+                        $scope.calTotal();
+                    }
+
+                    $scope.delete = function (item) {
+                        var index = $scope.items.indexOf(item);
+                        $scope.items.splice(index, 1);
+                        $scope.calTotal();
+                    }
+
+                    $scope.calTotal = function () {
+                        var totalQty = 0;
+                        var totalPrice = 0.00;
+                        items.forEach(function (item) {
+                            totalQty += item.qty;
+                            totalPrice += item.unit * item.qty;
+                        });
+                        $scope.totalQty = totalQty;
+                        $scope.totalPrice = totalPrice;
+                    }
+                }
+            </script>
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/angular/default.asp">W3Schools</a></li>
+        </ul>
+    </div>
+    <hr />
 </body>
 </html>

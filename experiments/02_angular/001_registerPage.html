@@ -3,21 +3,7 @@
 <head>
     <title>001_registerPage</title>
     <link rel="stylesheet" href="../css/bootstrap.css" />
-    <style>
-        .center {
-            left: 150px;
-            width: 800px;
-            margin: 100px;
-        }
-
-        .showcode {
-            background-color: #F5F9FF;
-        }
-
-        .showref {
-            background-color: #FFF5FF;
-        }
-    </style>
+    <link href="../css/myStyle.css" rel="stylesheet" />
     <script src="../js/angular.min.js"></script>
     <script type="text/javascript" src="../js/registerPage.js"></script>
 </head>
@@ -33,6 +19,10 @@
             <li>
                 <a href="../../fileview/Default.aspx?~/experiments/js/registerPage.js">Java Script scource</a>
             </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+
         </ul>
     </div>
     <hr />
@@ -132,43 +122,43 @@
     <div class="showcode">
         <h4>Code:</h4>
         <xmp>
-                (function () {
-                    var app = angular.module('register', []);
-                    app.controller('RegisterController', ['$scope', function ($scope) {
-                        $scope.list = [];
-                        $scope.user = {
-                            name: {
-                                first: 'tony',
-                                last: 'wang',
-                            },
-                            gender: 'male',
-                            dob: '1990',
-                            email: 'tony@gmail.com',
-                        };
-                        $scope.submit = function () {
-                            if ($scope.user.name.first) {
-                                $scope.list.push(this.user.name.first);
-                                $scope.user.name.first = '';
-                            }
-                            if ($scope.user.name.last) {
-                                $scope.list.push(this.user.name.last);
-                                $scope.user.name.last = '';
-                            }
-                            if ($scope.user.gender) {
-                                $scope.list.push(this.user.gender);
-                                $scope.user.gender = '';
-                            }
-                            if ($scope.user.dob) {
-                                $scope.list.push(this.user.dob);
-                                $scope.user.dob = '';
-                            }
-                            if ($scope.user.email) {
-                                $scope.list.push(this.user.email);
-                                $scope.user.email = '';
-                            }
-                        };
-                    }]);
-                })();
+            (function () {
+            var app = angular.module('register', []);
+            app.controller('RegisterController', ['$scope', function ($scope) {
+            $scope.list = [];
+            $scope.user = {
+            name: {
+            first: 'tony',
+            last: 'wang',
+            },
+            gender: 'male',
+            dob: '1990',
+            email: 'tony@gmail.com',
+            };
+            $scope.submit = function () {
+            if ($scope.user.name.first) {
+            $scope.list.push(this.user.name.first);
+            $scope.user.name.first = '';
+            }
+            if ($scope.user.name.last) {
+            $scope.list.push(this.user.name.last);
+            $scope.user.name.last = '';
+            }
+            if ($scope.user.gender) {
+            $scope.list.push(this.user.gender);
+            $scope.user.gender = '';
+            }
+            if ($scope.user.dob) {
+            $scope.list.push(this.user.dob);
+            $scope.user.dob = '';
+            }
+            if ($scope.user.email) {
+            $scope.list.push(this.user.email);
+            $scope.user.email = '';
+            }
+            };
+            }]);
+            })();
         </xmp>
     </div>
     <hr />
