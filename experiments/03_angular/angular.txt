@@ -2,4 +2,5 @@
 001_registerPage.html							Register Page
 002_orderList.html							Order List
 003_weatherAPI.html							Weather API
+004_geoLocationAPI.html						Geolocation API
 angular.txt								The story file for this story

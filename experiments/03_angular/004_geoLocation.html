@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>test</title>
+
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 100%;
+        }
+
+        @media print {
+            html, body {
+                height: auto;
+            }
+
+            #map_canvas {
+                height: 650px;
+            }
+        }
+    </style>
+
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script>
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            initialize(lat, lng);
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+
+        function initialize(lat, lng) {
+            var currentLoc = new google.maps.LatLng(lat, lng);
+            alert("Current Location is: " + lat + ", " + lng);
+            map = new google.maps.Map(document.getElementById('map_canvas'), {
+                center: currentLoc,
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            layer = new google.maps.FusionTablesLayer({
+                query: {
+                    select: 'Location',
+                    from: '1s3DYRvmNAfKgo-swjG39-8UEb9tHMm0UPHvW_tc'
+                }
+            });
+            layer.setMap(map);
+        }
+    </script>
+</head>
+
+<body onload="getLocation()">
+    <div id="map_canvas"></div>
+</body>
+</html>
