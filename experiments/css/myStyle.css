@@ -1,24 +1,37 @@
 ﻿body {
 }
-        .center {
-            left: 150px;
-            width: 800px;
-            margin: 100px;
-        }
 
-        .showcode {
-            background-color: #F5F9FF;
-        }
+.center {
+    left: 150px;
+    width: 800px;
+    margin: 100px;
+}
 
-        .showref {
-            background-color: #FFF5FF;
-        }
+.showcode {
+    background-color: #F5F9FF;
+}
 
-        .nvbar {
-        
-        background-color: #003366;
-        
-        
-        
-        
-        }
+.showref {
+    background-color: #FFF5FF;
+}
+
+.nvbar {
+    background-color: #003366;
+}
+
+
+.mycolor {
+    background-color: #55443D;
+    color: #FFFFFF;
+    font: bold;
+}
+
+    .mycolor:hover {
+        background-color: #F38A8A;
+        color: #FFFFFF;
+    }
+
+.imgstyle {
+    width: 200px;
+    height: 200px;
+}

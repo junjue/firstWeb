@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>001_slideDown</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <style>
+        .imgstyle {
+            width: 200px;
+            height: 200px;
+        }
+        .mycolor {
+            background-color: #55443D;
+            color:#FFFFFF;
+            font: bold;
+        }
+            .mycolor:hover {
+                background-color: #F38A8A;
+                color: #FFFFFF;
+            }
+    </style>
+
+</head>
+<body>
+    <h1>Slide Down</h1>
+    <ul>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/04_jquery/001_slideDown.html">Page scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/mystyle.html">CSS scource</a>
+        </li>
+    </ul>
+    <hr />
+
+    <div>
+        <h3>Slide down with button click</h3>
+        <img id="img1" class="imgstyle" src="../../images/image/panda_pocky.jpg" />
+        <br /><br />
+        <button class="btn mycolor btnslidedown">Slide Down Image</button>
+        <button class="btn mycolor btnslideup">Slide Up Image</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".btnslideup").click(function () {
+                $("#img1").slideUp();
+            });
+            $(".btnslidedown").click(function () {
+                $("#img1").slideDown();
+            });
+        });
+    </script>
+
+    
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <script>
+                $(document).ready(function () {
+                    $(".btnslideup").click(function () {
+                        $("#img1").slideUp();
+                    });
+                    $(".btnslidedown").click(function () {
+                        $("#img1").slideDown();
+                    });
+                });
+            </script>            
+        </xmp>
+    </div>
+    <hr />
+
+    <div>
+        <h3>Slide down with mouse over</h3>
+        <button class="btn mycolor btnslidemouseover">Mouse Over Me!</button>
+        <img id="img2" class="imgstyle" src="../../images/image/panda_pocky.jpg" />
+        <script>
+            $(document).ready(function () {
+                $(".btnslideup").mouseover(function () {
+                    $("img2").slideDown();
+                });
+                $(".btnslideup").mouseout(function () {
+                    $("img2").slideUp();
+                });
+            });
+        </script>
+
+
+        
+    
+    
+    </div>
+    <hr />
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+           
+
+
+
+
+
+        </xmp>
+    </div>
+    <hr />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
