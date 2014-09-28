@@ -29,9 +29,16 @@
     .mycolor:hover {
         background-color: #F38A8A;
         color: #FFFFFF;
+        font: bold;
     }
 
 .imgstyle {
     width: 200px;
     height: 200px;
+}
+
+
+.videostyle {
+    width: 350px;
+    height: 250px;
 }

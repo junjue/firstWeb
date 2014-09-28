@@ -1,23 +1,127 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>003_weatherAPI</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <script src="../js/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $.ajax({
-                url: "http://api.wunderground.com/api/7ad0a5e4cfc4151e/geolookup/conditions/q/MA/Boston.json",
-                dataType: "jsonp",
-                success: function (parsed_json) {
-                    var location = parsed_json['location']['city'];
-                    var temp_f = parsed_json['current_observation']['temp_f'];
-                    alert("Current temperature in " + location + " is: " + temp_f);
-                }
-            });
-        });
-    </script>
 </head>
-<body>
+<body ng-app="">
+
+    <h1>Weather API</h1>
+    <ul>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/03_angular/003_weatherAPI.html">Page scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+        </li>
+    </ul>
+    <hr />
+
+    <div class="container" ng-controller="weather">
+        <div class="container">
+            Zipcode:
+            <a id="url" href="http://api.wunderground.com/api/7ad0a5e4cfc4151e/geolookup/conditions/q/zipcode=02171.json">
+                02171
+            </a>
+        </div>
+
+        <input class="form-control" type="number" ng-model="zipcode" placeholder="Enter Zipcode" />
+        <button ng-click="getWeather()" class="btn btn-primary btn-block">Click to get Weather</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Tempreture
+                    </th>
+                    <th>
+                        Images
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="weather in weathers">
+                    <td>{{weather.date}}</td>
+                    <td>{{weather.display_location.full}}</td>
+                    <td>real:{{weather.tempf}}/feels like:{{weather.feelslike_f}}</td>
+                    <td><img ng-repeat="icon in weather.weatherIconUrl" ng-src="{{icon.value}}" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        //jQuery(document)(function ($) {
+        //    $.ajax({
+        //        url: "http://api.wunderground.com/api/7ad0a5e4cfc4151e/geolookup/conditions/q/zipcode=02171.json",
+        //        dataType: "jsonp",
+        //        success: function (parsed_json) {
+        //            var location = parsed_json['location']['city'];
+        //            var temp_f = parsed_json['current_observation']['temp_f'];
+        //            alert("Current temperature in " + location + " is: " + temp_f);
+        //        }
+        //    });
+        //});
+
+
+        function weather($scope, $http) {
+            $scope.zip = "02171";
+            $scope.getWeather = function () {
+                UpdateWeather($scope, $http);
+            }
+            UpdateWeather($scope, $http);
+        }
+
+        function UpdateWeather($scope, $http) {
+
+            $http.get("http://api.wunderground.com/api/7ad0a5e4cfc4151e/geolookup/conditions/q/zipcode=" + $scope.zip + ".json")
+            .success(function (response) {
+                console.log(response);
+                $scope.weathers = response.data.weather;
+            });
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+
+
+
+
+
+
+
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+        </ul>
+    </div>
+    <hr />
 
 </body>
 </html>

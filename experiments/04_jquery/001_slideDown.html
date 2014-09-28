@@ -11,11 +11,13 @@
             width: 200px;
             height: 200px;
         }
+
         .mycolor {
             background-color: #55443D;
-            color:#FFFFFF;
+            color: #FFFFFF;
             font: bold;
         }
+
             .mycolor:hover {
                 background-color: #F38A8A;
                 color: #FFFFFF;
@@ -30,7 +32,7 @@
             <a href="../../fileview/Default.aspx?~/experiments/04_jquery/001_slideDown.html">Page scource</a>
         </li>
         <li>
-            <a href="../../fileview/Default.aspx?~/experiments/css/mystyle.html">CSS scource</a>
+            <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
         </li>
     </ul>
     <hr />
@@ -39,8 +41,8 @@
         <h3>Slide down with button click</h3>
         <img id="img1" class="imgstyle" src="../../images/image/panda_pocky.jpg" />
         <br /><br />
-        <button class="btn mycolor btnslidedown">Slide Down Image</button>
         <button class="btn mycolor btnslideup">Slide Up Image</button>
+        <button class="btn mycolor btnslidedown">Slide Down Image</button>
     </div>
 
     <script>
@@ -54,7 +56,6 @@
         });
     </script>
 
-    
 
     <div class="showcode">
         <h4>Code:</h4>
@@ -68,42 +69,7 @@
                         $("#img1").slideDown();
                     });
                 });
-            </script>            
-        </xmp>
-    </div>
-    <hr />
-
-    <div>
-        <h3>Slide down with mouse over</h3>
-        <button class="btn mycolor btnslidemouseover">Mouse Over Me!</button>
-        <img id="img2" class="imgstyle" src="../../images/image/panda_pocky.jpg" />
-        <script>
-            $(document).ready(function () {
-                $(".btnslideup").mouseover(function () {
-                    $("img2").slideDown();
-                });
-                $(".btnslideup").mouseout(function () {
-                    $("img2").slideUp();
-                });
-            });
-        </script>
-
-
-        
-    
-    
-    </div>
-    <hr />
-
-    <div class="showcode">
-        <h4>Code:</h4>
-        <xmp>
-           
-
-
-
-
-
+            </script>
         </xmp>
     </div>
     <hr />
