@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>002_getWeather</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Get Weather</h1>
+    <ul>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/04_jquery/002_getWeather.html">Page scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+        </li>
+    </ul>
+    <hr />
+
+    <div class="container">
+        <input class="form-control" type="text" id="currentZipcode" placeholder="Enter Zipcode">
+        <button class="btn btn-success" onclick="updateWeather()">Get Current Weather</button>
+
+        <p id="updatedWeather"></p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Describing</th>
+                    <th>Tempreture</th>
+                    <th>Images</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="weatherLocation"></td>
+                    <td id="weatherDescribe"></td>
+                    <td id="weatherTemp"></td>
+                    <td><img id="weatherImg" /></td>
+                    <!--TODO: HANDLE ERROR TO ADD DEFALUT VALUE-->
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        function updateWeather() {
+            var zipcode = document.getElementById("currentZipcode").value;
+            $.ajax({
+                url: "http://api.wunderground.com/api/7ad0a5e4cfc4151e/geolookup/conditions/q/zipcode=" + zipcode + ".json",
+                dataType: "jsonp",
+                success: function (parsed_json) {
+                    var weatherLocation = parsed_json['current_observation']['display_location']['full'];
+                    var weatherDescribe = parsed_json['current_observation']['weather'];
+                    var weatherTemp = 'Real:' + parsed_json['current_observation']['temp_f'] + ' /Feels like:' + parsed_json['current_observation']['feelslike_f'];
+                    var weatherImg = parsed_json['current_observation']['icon_url'];
+
+                    var temp_f = parsed_json['current_observation']['temp_f'];
+                    document.getElementById("weatherLocation").innerHTML = weatherLocation;
+                    document.getElementById("weatherDescribe").innerHTML = weatherDescribe;
+                    document.getElementById("weatherTemp").innerHTML = weatherTemp;
+                    document.getElementById("weatherImg").src = weatherImg;
+                }
+            });
+        }
+    </script>
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <script>
+                function updateWeather() {
+                    var zipcode = document.getElementById("currentZipcode").value;
+                    $.ajax({
+                        url: "http://api.wunderground.com/api/7ad0a5e4cfc4151e/geolookup/conditions/q/zipcode=" + zipcode + ".json",
+                        dataType: "jsonp",
+                        success: function (parsed_json) {
+                            var weatherLocation = parsed_json['current_observation']['display_location']['full'];
+                            var weatherDescribe = parsed_json['current_observation']['weather'];
+                            var weatherTemp = 'Real:' + parsed_json['current_observation']['temp_f'] + ' /Feels like:' + parsed_json['current_observation']['feelslike_f'];
+                            var weatherImg = parsed_json['current_observation']['icon_url'];
+
+                            var temp_f = parsed_json['current_observation']['temp_f'];
+                            document.getElementById("weatherLocation").innerHTML = weatherLocation;
+                            document.getElementById("weatherDescribe").innerHTML = weatherDescribe;
+                            document.getElementById("weatherTemp").innerHTML = weatherTemp;
+                            document.getElementById("weatherImg").src = weatherImg;
+                        }
+                    });
+                }
+            </script>
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+        </ul>
+    </div>
+    <hr />
+
+</body>
+</html>

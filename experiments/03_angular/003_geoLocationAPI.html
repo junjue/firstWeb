@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>004_geoLocationAPI</title>
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 100%;
+        }
+
+        @media print {
+            html, body {
+                height: auto;
+            }
+
+            #map_canvas {
+                height: 650px;
+            }
+        }
+    </style>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+</head>
+
+<body onload="getLocation()">
+    <h1>Geo Location API</h1>
+    <ul>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/03_angular/003_geoLocationAPI.html">Page scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+        </li>
+    </ul>
+    <hr />
+
+    <div id="map_canvas" style="width: 720px; height: 480px"></div>
+    <hr />
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            initialize(lat, lng);
+        }
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+        function initialize(lat, lng) {
+            var currentLoc = new google.maps.LatLng(lat, lng);
+            alert("Your Current Location is: " + lat + ", " + lng);
+            map = new google.maps.Map(document.getElementById('map_canvas'), {
+                center: currentLoc,
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            layer = new google.maps.FusionTablesLayer({
+                query: {
+                    select: 'Location',
+                    from: '1s3DYRvmNAfKgo-swjG39-8UEb9tHMm0UPHvW_tc'
+                }
+            });
+            layer.setMap(map);
+        }
+    </script>
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <script>
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition, showError);
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                }
+                function showPosition(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    initialize(lat, lng);
+                }
+                function showError(error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            x.innerHTML = "User denied the request for Geolocation."
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            x.innerHTML = "Location information is unavailable."
+                            break;
+                        case error.TIMEOUT:
+                            x.innerHTML = "The request to get user location timed out."
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            x.innerHTML = "An unknown error occurred."
+                            break;
+                    }
+                }
+                function initialize(lat, lng) {
+                    var currentLoc = new google.maps.LatLng(lat, lng);
+                    alert("Current Location is: " + lat + ", " + lng);
+                    map = new google.maps.Map(document.getElementById('map_canvas'), {
+                        center: currentLoc,
+                        zoom: 11,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+                    layer = new google.maps.FusionTablesLayer({
+                        query: {
+                            select: 'Location',
+                            from: '1s3DYRvmNAfKgo-swjG39-8UEb9tHMm0UPHvW_tc'
+                        }
+                    });
+                    layer.setMap(map);
+                }
+            </script>
+
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+        </ul>
+    </div>
+    <hr />
+</body>
+</html>
