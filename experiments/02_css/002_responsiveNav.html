@@ -25,6 +25,9 @@
     <hr />
 
     <nav>
+        <p>Here is a responsive navigation menu. You could change the size of window, when the width is smaller than 480px, the menu would become a button. If you click the button, the menu would show at your left hand side.</p>
+        <br />
+        <p>This nav bar is designed for my homepage. If users use cellphone or tablet, the page could shrink in a convenient way. If you need to navigate to other routh, you could find the button easily.</p>
         <input type="checkbox" id="s-menu-toggle" class="s-menu-toggle s-menu-toggle-button">
         <ul id="plain-menu" class="s-toggleable-menu s-left">
             <li>
@@ -40,51 +43,38 @@
         <label class="s-left smenu-toggle" for="s-menu-toggle">+</label>
     </nav>
     <hr />
-    <div class="showcode">
-        <h4>Code:</h4>
-        <xmp>
+    <div>
+        <h4 class="showcode">Code:</h4>
+        <p>Use max-width to control the maximum window size I want to shrink the menu. Control the elements and the positions of them.</p>
+        <xmp class="showcode">
             @media handheld, screen and (max-width: 480px) {
-                .smenu-toggle,
-                .s-menu-toggle-button,
-                .s-toggleable-menu {
-                top: 0;
-                position: fixed;
-                -webkit-transition: all 0.2s;
-                -moz-transition: all 0.2s;
-                -ms-transition: all 0.2s;
-                -o-transition: all 0.2s;
-                transition: all 0.2s;
-                }
-                .smenu-toggle {
-                left: 0;
-                margin: 0;
-                display: inline-block;
-                width: 15%;
-                z-index: 999;
-                }
-                .smenu-toggle:hover {
-                cursor: pointer;
-                }
-                .s-toggleable-menu {
-                margin: 0;
-                width: 85%;
-                height: 100%;
-                max-height: 100%;
-                min-height: 100%;
-                z-index: 998;
-                overflow: hidden;
-                }
-                .s-toggleable-menu.s-left {
-                left: -105%;
-                }
-                .s-menu-toggle-button:checked ~ .smenu-toggle.s-left {
-                left: auto;
-                right: 0;
-                }
-                .s-menu-toggle-button:checked + .s-toggleable-menu.s-left {
-                width: 85% !important;
-                left: 0;
-                }
+            .smenu-toggle,
+            .s-menu-toggle-button,
+            .s-toggleable-menu {
+            top: 0;
+            position: fixed;
+            }
+            .smenu-toggle {
+            left: 0;
+            margin: 0;
+            display: inline-block;
+            width: 15%;
+            z-index: 999;
+            }
+        </xmp>
+        <p>Check the position of toggled menu, make sure it attached appropriately to the left.</p>
+        <xmp class="showcode">
+            .s-toggleable-menu.s-left {
+            left: -105%;
+            }
+            .s-menu-toggle-button:checked ~ .smenu-toggle.s-left {
+            left: auto;
+            right: 0;
+            }
+            .s-menu-toggle-button:checked + .s-toggleable-menu.s-left {
+            width: 85% !important;
+            left: 0;
+            }
             }
         </xmp>
     </div>

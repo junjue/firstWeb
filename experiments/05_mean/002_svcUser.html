@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>002_svcUser</title>
+    <link href="../css/hover.css" rel="stylesheet" />
+    <link href="../css/mystyle.css" rel="stylesheet" />
+    <style>
+        .buttonpink {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Service Users Manage</h1>
+    <ul>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/05_mean/002_meanInit.html">Page scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/js/controller.js">Controller javascript</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/js/server.js">Server javascript</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/mystyle.html">CSS scource</a>
+        </li>
+    </ul>
+    <hr />
+
+    <div>
+        <h3>User Management</h3>
+
+        <a href="http://experiments-junjue.rhcloud.com/" class="buttonpink textfont">Go To Openshift</a>
+        <p>This page allows clients to insert their information to the database, and edit/delete as well. I would improve this page as a login page which allows comparison of username and password.</p>
+        <br />
+        <p>I used git to upload this page on openshift. But I don't know how to connect mongodb on school's server. By click the button above, you would be transfer to openshift.com. And I will figure out how to connect database soon!</p>
+    </div>
+    <hr />
+
+    <div>
+        <h4>Code</h4>
+        
+        <h4>Connect to Mongodb</h4>
+        <p>First, need to connect to the mongodb. And use collection svcUsers to store data.</p>
+        <xmp class="showcode">
+            var connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+                process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+                process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+                process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+                process.env.OPENSHIFT_APP_NAME;
+            var db = mongojs(connection_string, ["svcUsers"]);
+        </xmp>
+
+        <h4>Add user to database</h4>
+        <p>Add user to database. use <code>post</code> from the client, and use <code>db.svcUsers.insert</code> at server side to write into database.</p>
+        <xmp class="showcode">
+            $scope.addUser = function(){
+                console.log($scope.svcUser);
+                $http.post("/svcUsers",$scope.svcUser)
+                .success(function(response){
+                //console.log(response);
+                $scope.refresh();
+                });
+            };
+        </xmp>
+        <xmp class="showcode">
+            app.post("/svcUsers",function(req,res){
+                var svc = req.body;
+                console.log(svc);
+                db.svcUsers.insert(req.body, function(err,doc){
+                res.json(doc);
+                });
+            });
+        </xmp>
+
+
+        <h4>Select and update by id</h4>
+        <p>
+            Select one data record by click the button "Select", and find the data by its id. Choose this data and modify it by id. Use <code>get</code> and <code>put</code> for select and update.
+        </p>
+        <xmp class="showcode">
+            $scope.selectUser = function (id) {
+                console.log(id);
+                $http.get("/svcUsers/"+ id)
+                .success(function (response) {
+                console.log(response);
+                $scope.svcUser = response;
+                });
+            };
+
+            $scope.updateUser = function(){
+                console.log($scope.svcUser);
+                $http.put("/svcUsers/"+ $scope.svcUser._id, $scope.svcUser)
+                .success(function(response){
+                $scope.refresh();
+                });
+            };
+        </xmp>
+
+        <p>
+            Response by server side, use <code>db.svcUsers.findOne()</code> to select data by its id, and use <code>db.svcUsers.update()</code> to modify its values.
+        </p>
+        <xmp class="showcode">
+            app.get("/svcUsers/:id",function(req,res){
+                var id = req.params.id;
+                console.log(id);
+                db.svcUsers.findOne({_id: mongojs.ObjectId(id)},
+                function (err,doc) {
+                    res.json(doc);
+                });
+            });
+
+            app.put("/svcUsers/:id",function(req,res){
+                var id = req.params.id;
+                console.log(req.body);
+                var argument = {
+                    $set:{
+                    username: req.body.username,
+                    password: req.body.password,
+                    email: req.body.email
+                    }
+                };
+                db.svcUsers.update({_id:mongojs.ObjectId(id)},argument,function(err,doc){
+                res.json(doc);
+                });
+            });
+        </xmp>
+
+
+        <h4>Deletion by id</h4>
+        <p>
+            Delete single data by click "delete" button. Use <code>delete</code> to request from client side, responsed by server <code>db.svcUsers.remove()</code> by id.
+        </p>
+        <xmp class="showcode">
+            $scope.deleteUser = function(id){
+                $http.delete("/svcUsers/"+ id)
+                .success(function (response){
+                $scope.refresh();
+                });
+            };
+        </xmp>
+        <xmp class="showcode">
+            app.delete("/svcUsers/:id",function(req,res){
+                var id = req.params.id;
+                console.log(id);
+                db.svcUsers.remove({_id: mongojs.ObjectId(id)},
+                function(err,doc){
+                res.json(doc);
+                });
+            });
+        </xmp>
+
+        <h4>Refresh data</h4>
+        <p>
+            Refresh the list of data by using function. Call this function after add/update actions.
+        </p>
+        <xmp class="showcode">
+            $scope.refresh = function(){
+                $http.get("/svcUsers")
+                .success($scope.renderSvcUsers);
+            };
+        </xmp>        
+    </div>
+
+
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
