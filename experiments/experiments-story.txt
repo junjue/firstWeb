@@ -3,6 +3,7 @@
 ../story/index.htm?../experiments/02_css/css.txt		CSS
 ../story/index.htm?../experiments/03_angular/angular.txt		Angular
 ../story/index.htm?../experiments/04_jquery/jquery.txt		jQuery
+../story/index.htm?../experiments/05_mean/mean.txt		MEAN
 ../story/index.htm?../experiments/1_html/1_html.txt			HTML_OLD
 ../story/index.htm?../experiments/2_css/2_css.txt			CSS_OLD
 ../story/index.htm?../experiments/3_bootstrap/3_bootstrap.txt		BOOTSTRAP_OLD

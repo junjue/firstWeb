@@ -1,3 +1,4 @@
 ﻿../../story/whatisnext.htm?../experiments/02_css/css.txt	What is Next?
 001_hover.html							CSS Hover
+002_responsiveNav.html							Responsive Navigation Bar
 css.txt								The story file for this story
