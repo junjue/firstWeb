@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>002_responsiveNav</title>
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <link href="../css/responsiveNav.css" rel="stylesheet" />
+    <link href="../css/responsiveStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Responsive Navigation Bar</h1>
+    <ul>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/02_css/002_responsiveNav.html">Page scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/responsiveNav.css">Responsive Nav scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/responsiveStyle.css">Nav Style scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/mystyle.html">CSS scource</a>
+        </li>
+    </ul>
+    <hr />
+
+    <nav>
+        <input type="checkbox" id="s-menu-toggle" class="s-menu-toggle s-menu-toggle-button">
+        <ul id="plain-menu" class="s-toggleable-menu s-left">
+            <li>
+                <a href="../../story/index.htm?../experiments/experiments-story.txt">Experiments</a>
+            </li>
+            <li>
+                <a href="../../story/index.htm?../project/project-story.txt">Project</a>
+            </li>
+            <li>
+                <a href="../../blog/">Blog</a>
+            </li>
+        </ul>
+        <label class="s-left smenu-toggle" for="s-menu-toggle">+</label>
+    </nav>
+    <hr />
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            @media handheld, screen and (max-width: 480px) {
+                .smenu-toggle,
+                .s-menu-toggle-button,
+                .s-toggleable-menu {
+                top: 0;
+                position: fixed;
+                -webkit-transition: all 0.2s;
+                -moz-transition: all 0.2s;
+                -ms-transition: all 0.2s;
+                -o-transition: all 0.2s;
+                transition: all 0.2s;
+                }
+                .smenu-toggle {
+                left: 0;
+                margin: 0;
+                display: inline-block;
+                width: 15%;
+                z-index: 999;
+                }
+                .smenu-toggle:hover {
+                cursor: pointer;
+                }
+                .s-toggleable-menu {
+                margin: 0;
+                width: 85%;
+                height: 100%;
+                max-height: 100%;
+                min-height: 100%;
+                z-index: 998;
+                overflow: hidden;
+                }
+                .s-toggleable-menu.s-left {
+                left: -105%;
+                }
+                .s-menu-toggle-button:checked ~ .smenu-toggle.s-left {
+                left: auto;
+                right: 0;
+                }
+                .s-menu-toggle-button:checked + .s-toggleable-menu.s-left {
+                width: 85% !important;
+                left: 0;
+                }
+            }
+        </xmp>
+    </div>
+    <hr />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>

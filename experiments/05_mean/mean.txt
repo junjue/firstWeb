@@ -1,0 +1,3 @@
+﻿../../story/whatisnext.htm?../experiments/05_mean/mean.txt	What is Next?
+001_meanInit.html							MEAN Init
+mean.txt								The story file for this story
