@@ -1,4 +1,5 @@
 ﻿../../story/whatisnext.htm?../experiments/05_mean/mean.txt	What is Next?
 001_meanInit.html							MEAN Init
 002_svcUser.html							User Management
+003_organize.html							Organized codes
 mean.txt								The story file for this story

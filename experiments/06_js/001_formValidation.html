@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>001_formValidation</title>
+    <script src="../js/angular.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <style>
+        .w {
+            width: 300px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var fname = document.forms["myForm"]["fname"].value;
+            var lname = document.forms["myForm"]["lname"].value;
+            var x = document.forms["myForm"]["email"].value;
+            var at = x.indexOf("@");
+            var dot = x.lastIndexOf(".");
+
+            if (fname == null || fname == "" || lname == null || lname == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+            else if (at < 1 || dot < at + 2 || dot + 2 >= x.length) {
+                alert("Please enter a valid e-mail address");
+                return false;
+            }
+            else alert("success");
+        }
+
+    </script>
+</head>
+
+<body ng-app>
+    <div>
+        <h1>Form Validation</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/06_js/001_formValidation.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+        </ul>
+        <hr />
+    </div>
+    <div>
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            Enter your name: <input type="text" name="fname" class="form-control w" placeholder="First Name">
+            <input type="text" name="lname" class="form-control w" placeholder="Last Name">
+            Email: <input type="text" name="email" class="form-control w" placeholder="example@ccs.neu.edu">
+            <input type="submit" value="Check validation" class="btn btn-success w">
+        </form>
+    </div>
+
+
+    <hr />
+    <br />
+    <div class="showcode">
+        <h4>Code:</h4>
+        <p>First, I have a <code>form</code> tag in the body. And there are two inputs in it, which are name field and email field.</p>
+        <xmp>
+            <form name="myForm" onsubmit="return validateForm()" method="post">
+                ...
+            </form>
+        </xmp>
+        <p>Then, give inputs names like 'fname' for first name.</p>
+        <xmp>
+            <input type="text" name="fname" class="form-control w" placeholder="First Name">
+            <input type="text" name="lname" class="form-control w" placeholder="Last Name">
+            <input type="text" name="email" class="form-control w" placeholder="example@ccs.neu.edu">
+        </xmp>
+        <p>Write a function named <code>validationForm()</code>to validate input values</p>
+        <xmp>
+            <script>
+                function validateForm() {...}
+            </script>
+        </xmp>
+        <p>Define varibles by inputs</p>
+        <xmp>
+            var fname = document.forms["myForm"]["fname"].value;
+            var lname = document.forms["myForm"]["lname"].value;
+            var x = document.forms["myForm"]["email"].value;
+            var at = x.indexOf("@");
+            var dot = x.lastIndexOf(".");
+        </xmp>
+        <p>Give the condition whether the input is validate or not. Use <code>null</code> and <code>""</code> to check the name fields are blank or not. Use the position of <code>@</code> and <code>.</code> to check the email input is validate.</p>
+        <xmp>
+            if (fname == null || fname == "" || lname == null || lname == "") {
+            alert("Name must be filled out");
+            return false;
+            }
+            else if (at < 1 || dot < at + 2 || dot + 2 >= x.length) {
+            alert("Please enter a valid e-mail address");
+            return false;
+            }
+            else alert("success");
+        </xmp>
+        <p>If inputs are invalidate, give warning alert by showing the reason. If pass the condition, give success sign.</p>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+        </ul>
+    </div>
+    <hr />
+</body>
+</html>

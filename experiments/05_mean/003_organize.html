@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>003_organize</title>
+    <link href="../css/hover.css" rel="stylesheet" />
+    <link href="../css/mystyle.css" rel="stylesheet" />
+    <style>
+        .buttonpink {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Organize Codes on Openshift</h1>
+    <ul>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/05_mean/003_organize.html">Page scource</a>
+        </li>
+        <li>
+            <a href="../../fileview/Default.aspx?~/experiments/css/mystyle.css">CSS scource</a>
+        </li>
+    </ul>
+    <hr />
+
+
+    <a href="http://experiments-junjue.rhcloud.com/" class="buttonpink textfont">Go To Openshift</a>
+    <a href="https://github.com/junjue/experimentgit" class="buttonpink textfont">Go To Github</a>
+
+
+    <div>
+        <h3>1. Add local database/mongodb conditional statment</h3>
+        <p>When I made the SvcUser last week, I tried to connect to the database. When I'm testing the codes locally, I used my local database named cs561001.It worked. But when I uploaded to openshift, it showed error. After googled for the solution, I noticed that I should use the global variables from process.env as my connecting string for the database on openshift.</p>
+        <p>But the question is, each time I want to add something, I would like to try locally first. I have to change the string and test, then change back when uploading.</p>
+        <p>It was not a big deal, but made me crazy. Luckly, professor taught us how to figure it out. Use a sigle condition to replace the connecting string when the global varibles are not exist.</p>
+        <p>It really helps!</p>
+    </div>
+    <hr />
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            var connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+                process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+                process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+                process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+                process.env.OPENSHIFT_APP_NAME;
+            if (typeof process.env.OPENSHIFT_MONGODB_DB_URL == 'undefined'){
+                connection_string = 'cs561001'
+            }
+            var db = mongojs(connection_string, ["svcUsers"]);
+        </xmp>
+    </div>
+
+    <div>
+        <h3>2. Add modules on server side</h3>
+        <p>First, created another file in ./public/features/services/ and named as server.js. Put all functions response to the client's request into this new file and built as a module. Then load this module in server.js. This could make server.js more clear, and this module could been use for similar case.</p>
+    </div>
+    <hr />
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <h4>public/features/services/server.js</h4>
+        <xmp>
+            module.exports = function(app, db, mongojs){
+                ...
+            }
+        </xmp>
+        <h4>server.js</h4>
+        <xmp>
+            var userapp = require("./public/features/services/server.js");
+        </xmp>
+    </div>
+
+    <div>
+        <h3>3.Add angular module</h3>
+        <p>Created another file in ./public/js/ and named as app.js. Changed controller.js as app.controller and put original function into it.</p>
+        <p>This app is different with app in server.js!</p>
+    </div>
+    <hr />
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <h4>public/js/app.js</h4>
+        <xmp>
+            var app = angular.module('userApps',[]);
+        </xmp>
+        <h4>public/features/services/controller.js</h4>
+        <xmp>
+            app.controller("svcController",function svcController($scope, $http){
+                ...
+            });        
+        </xmp>
+    </div>
+
+
+    <div>
+        <h3>4.Surviving in minification problem</h3>
+        <p>Changed public/features/services/controller.js by using array to keep the string value of $scope and $http. This helps to keep the whole word when minification.</p>
+        <p>Learnt how to using array smarter.</p>
+    </div>
+    <hr />
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <h4>public/features/services/controller.js</h4>
+        <xmp>
+            app.controller("svcController",["$scope", "$http", function svcController($scope, $http){
+                ...
+            }]);
+        </xmp>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
