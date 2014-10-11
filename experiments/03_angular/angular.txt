@@ -2,4 +2,6 @@
 001_registerPage.html							Register Page
 002_orderList.html							Order List
 003_geoLocationAPI.html						Geolocation API
+004_mapAlpha.html						    Map alpha for project
+005_directionAlpha.html						Direction alpha for project
 angular.txt								The story file for this story
