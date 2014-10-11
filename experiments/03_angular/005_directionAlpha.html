@@ -57,7 +57,7 @@
                 });
                 google.maps.event.addListener(marker, 'click', function() {
                     new google.maps.InfoWindow({
-                        content: 'I am here Gua!'
+                        content: 'I am here!'
                     }).open(map,marker);
                 });
                 calcRoute();
@@ -67,10 +67,10 @@
                 var start = currentCoor;
                 var endName = document.getElementById('end').value;
                 var end;
-                if(endName == 'sessionm')
-                    end = new google.maps.LatLng(42.349414, -71.048827);
-                if(endName == 'home')
-                    end = new google.maps.LatLng(42.273821, -71.031074);
+                if(endName == 'neu')
+                    end = new google.maps.LatLng(42.339589, -71.088963);
+                if(endName == 'bostonCommon')
+                    end = new google.maps.LatLng(42.354932, -71.065649);
                 var request = {
                     origin:start,
                     destination:end,
@@ -111,8 +111,8 @@
             </select>
             <b>End: </b>
             <select id="end" onchange="calcRoute();">
-                <option value="sessionm">SessionM</option>
-                <option value="home">Home</option>
+                <option value="neu">NEU</option>
+                <option value="bostonCommon">Boston Common</option>
             </select>
         </div>
         <div id="map-canvas"></div>
