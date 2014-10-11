@@ -1,73 +1,154 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            #mapholder {
-                width: 500px;
-                height: 400px;
+<head>
+    <title>004_mapAlpha</title>
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <style>
+        #mapholder {
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Map Alpha</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/03_angular/004_mapAlpha.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+
+        </ul>
+    </div>
+    <hr />
+    <p>Added a marker and InfoWindow on the map when showing the location where you are.</p>
+    <div id="mapholder"></div>
+    <script>
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        window.onload = getLocation();
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(initialize, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
             }
-        </style>
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
-    </head>
-    <body>
-        <div id="mapholder"></div>
+        }
+        function initialize(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            var coor = new google.maps.LatLng(lat, lng);
 
-        <script>
-            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-            window.onload = getLocation();
-
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(initialize,showError);
-                    } else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                }
+            var mapCanvas = document.getElementById('mapholder');
+            var mapOptions = {
+                center: coor,
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             }
+            var map = new google.maps.Map(mapCanvas, mapOptions)
+            google.maps.event.addDomListener(window, 'load', initialize);
 
-            function initialize(position) {
-                var lat = position.coords.latitude;
-                var lng = position.coords.longitude;
-                var coor = new google.maps.LatLng(lat, lng);
-
-                var mapCanvas = document.getElementById('mapholder');
-                var mapOptions = {
-                    center: coor,
-                    zoom: 16,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                var map = new google.maps.Map(mapCanvas, mapOptions)
-                google.maps.event.addDomListener(window, 'load', initialize);
-
-                var marker = new google.maps.Marker({
-                    position: coor,
-                    map: map,
-                    icon: iconBase + 'schools_maps.png',
-                    title: 'Yo!'
-                });
-                google.maps.event.addListener(marker, 'click', function() {
-                    new google.maps.InfoWindow({
-                        content: 'I am here Gua!'
-                    }).open(map,marker);
-                });
-            }
-
-            function showError(error) {
-                switch(error.code) {
-                    case error.PERMISSION_DENIED:
+            var marker = new google.maps.Marker({
+                position: coor,
+                map: map,
+                icon: iconBase + 'schools_maps.png',
+                title: 'Yo!'
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                new google.maps.InfoWindow({
+                    content: 'I am here!'
+                }).open(map, marker);
+            });
+        }
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
                     x.innerHTML = "User denied the request for Geolocation."
                     break;
-                    case error.POSITION_UNAVAILABLE:
+                case error.POSITION_UNAVAILABLE:
                     x.innerHTML = "Location information is unavailable."
                     break;
-                    case error.TIMEOUT:
+                case error.TIMEOUT:
                     x.innerHTML = "The request to get user location timed out."
                     break;
-                    case error.UNKNOWN_ERROR:
+                case error.UNKNOWN_ERROR:
                     x.innerHTML = "An unknown error occurred."
                     break;
-                }
             }
-        </script>
-    </body>
-</html>
+        }
+    </script>
 
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <script>
+                var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+                window.onload = getLocation();
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(initialize, showError);
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                }
+                function initialize(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    var coor = new google.maps.LatLng(lat, lng);
+
+                    var mapCanvas = document.getElementById('mapholder');
+                    var mapOptions = {
+                        center: coor,
+                        zoom: 16,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    }
+                    var map = new google.maps.Map(mapCanvas, mapOptions)
+                    google.maps.event.addDomListener(window, 'load', initialize);
+
+                    var marker = new google.maps.Marker({
+                        position: coor,
+                        map: map,
+                        icon: iconBase + 'schools_maps.png',
+                        title: 'Yo!'
+                    });
+                    google.maps.event.addListener(marker, 'click', function () {
+                        new google.maps.InfoWindow({
+                            content: 'I am here!'
+                        }).open(map, marker);
+                    });
+                }
+                function showError(error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            x.innerHTML = "User denied the request for Geolocation."
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            x.innerHTML = "Location information is unavailable."
+                            break;
+                        case error.TIMEOUT:
+                            x.innerHTML = "The request to get user location timed out."
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            x.innerHTML = "An unknown error occurred."
+                            break;
+                    }
+                }
+            </script>
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/angular/default.asp">W3Schools</a></li>
+            <li><a href="https://developers.google.com/maps/documentation/javascript/">Google API</a></li>
+        </ul>
+    </div>
+    <hr />
+</body>
+</html>
