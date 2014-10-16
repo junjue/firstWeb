@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>002_imgChanging</title>
+    <script src="../js/angular.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function dispNext() {
+            x = (x === images.length - 1) ? 0 : x + 1;
+            document.getElementById("img").src = images[x];
+        }
+
+        function dispPrev() {
+            x = (x <= 0) ? images.length - 1 : x - 1;
+            document.getElementById("img").src = images[x];
+        }
+
+        function startTimer() {
+            setInterval(dispNext, 1500);
+        }
+
+        var images = [], x = -1;
+        images[0] = "../../images/image/e.png";
+        images[1] = "../../images/image/p.png";
+        images[2] = "../../images/image/b.png";
+    </script>
+
+</head>
+
+
+<body onload="startTimer()">
+    <div>
+        <h1>Images Changing</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/06_js/002_imgChanging.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+        </ul>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <button onclick="dispPrev()" class="btn pull-right mycolor"><</button>
+        </div>
+        <div class="col-sm-4">
+            <img id="img" src="../../images/image/e.png">
+        </div>
+        <div class="col-sm-4">
+            <button onclick="dispNext()" class="btn mycolor">></button>
+        </div>
+    </div>
+
+    <hr />
+    <br />
+    <div class="showcode">
+        <h4>Code:</h4>
+        <p>I want to show images changing automatically on my website, so I use javascript to achive it.</p>
+        <p>There are three functions in my script. One is the timer of changing, the other two are controller of buttons.</p>
+        <xmp>
+            <script type="text/javascript">
+                function dispNext() {...}
+                function dispPrev() {...}
+                function startTimer() {...}
+            </script>
+        </xmp>
+        <p>Set interval timer to change images as 1500ms by using dispNext().</p>
+        <xmp>
+            <script type="text/javascript">
+                function startTimer() {
+                    setInterval(dispNext, 1500);
+                }
+            </script>
+        </xmp>
+        <p>Change the value of <code>document.getElementById</code> in order to change pictures. Use <code>x + 1</code> or <code>x - 1</code> to decide next/prev image to show by clicking buttons.</p>
+        <xmp>
+            <script type="text/javascript">
+                function dispNext() {
+                    x = (x === images.length - 1) ? 0 : x + 1;
+                    document.getElementById("img").src = images[x];
+                }
+
+                function dispPrev() {
+                    x = (x <= 0) ? images.length - 1 : x - 1;
+                    document.getElementById("img").src = images[x];
+                }
+            </script>
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+            <li><a href="http://stackoverflow.com/">Stack Overflow</li>
+        </ul>
+    </div>
+    <hr />
+</body>
+</html>

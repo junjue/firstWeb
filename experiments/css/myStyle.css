@@ -1,4 +1,10 @@
-﻿body {
+﻿@import url(http://fonts.googleapis.com/css?family=Cagliostro);
+
+.myfont {
+    font-family: Cagliostro, sans-serif;
+}
+
+body {
 }
 
 .center {
@@ -9,10 +15,13 @@
 
 .showcode {
     background-color: #F5F9FF;
+    font-family: Cagliostro, sans-serif;
+    font: bold;
 }
 
 .showref {
     background-color: #FFF5FF;
+    font-family: Cagliostro, sans-serif;
 }
 
 .nvbar {
@@ -42,3 +51,18 @@
     width: 350px;
     height: 250px;
 }
+
+
+.scrollToTop {
+    width: 10%;
+    height: 30%;
+    position: fixed;
+    bottom: 45px;
+    right: 35px;
+    display: none;
+    background: url('../../images/image/upsign.png') no-repeat 0px 20px;
+}
+
+    .scrollToTop:hover {
+        zoom: 110%;
+    }

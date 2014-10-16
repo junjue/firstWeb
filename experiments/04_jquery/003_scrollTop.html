@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>003_scrollTop</title>
+    <script src="../js/angular.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="../js/scrollTop.js"></script>
+</head>
+<body>
+    <div>
+        <h1>Scroll To Top</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/04_jquery/003_scrollTop.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/js/scrollTop.js">Javascript scource</a>
+            </li>
+        </ul>
+        <hr />
+    </div>
+
+    <a href="#" class="scrollToTop"></a>
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <p>This experiment is to learn how to use button to scroll up to the page's top. The scroll up button would show when scroll down the page.</p>
+        <h5>anchor of scroll up button</h5>
+        <xmp>
+            <a href="#" class="scrollToTop"></a>
+        </xmp>
+        <p>I made this image and used it as the scroll up button.</p>
+        <p>Here I set the position and url of the image in ../css/myStyle.css file. When mouseover, the picture would zoom out.</p>
+        <h5>../css/myStyle.css</h5>
+        <xmp>
+            <style>
+                .scrollToTop {
+                    width: 10%;
+                    height: 20%;
+                    position: fixed;
+                    bottom: 35px;
+                    right: 35px;
+                    display: none;
+                    background: url('../../images/image/upsign.png') no-repeat 0px 20px;
+                }
+                    .scrollToTop:hover {
+                        zoom: 110%;
+                    }
+            </style>
+        </xmp>
+        <p>I use jquery to controll this scroll to top button.</p>
+        <p>First to check if the window is top. If not, trigger the button to show.</p>
+        <h5>../js/scrollTop.js</h5>
+        <xmp>
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollToTop').fadeIn();
+                    } else {
+                        $('.scrollToTop').fadeOut();
+                }
+            });
+        </xmp>
+        <p>Then, when the button shows, you could go back to the top of the page by click the button.</p>
+        <p>Return to the page's top by using <code>{scrollTop: 0}</code>.</p>
+        <h5>../js/scrollTop.js</h5>
+        <xmp>
+            $('.scrollToTop').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 600);
+            return false;
+            });
+        </xmp>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+            <li><a href="http://stackoverflow.com/">Stack Overflow</li>
+        </ul>
+    </div>
+    <hr />
+    </body>
+</html>

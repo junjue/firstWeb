@@ -3,9 +3,10 @@
 <head>
     <title>experiments</title>
     <link rel="stylesheet" href="3.bootstrap/css/bootstrap.css" />
+    <link href="css/myStyle.css" rel="stylesheet" />
 </head>
-<body>
-    <!--<div class="container">
+<body class="myfont">
+    <div class="container">
         <h2>Experiments</h2>
     </div>
 
@@ -40,7 +41,7 @@
                 </ul>
             </div>
         </div>
-    </div>-->
+    </div>
 
 </body>
 </html>
