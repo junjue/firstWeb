@@ -2,4 +2,6 @@
 001_slideDown.html							Slide Down
 002_getWeather.html							Get Weather
 003_scrollTop.html							Scroll To Top
+004_draggable.html							Draggable
+005_dragSort.html							Sortable
 jquery.txt								The story file for this story
