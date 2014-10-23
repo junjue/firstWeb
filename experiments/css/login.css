@@ -1,0 +1,72 @@
+﻿body {
+}
+
+.centered {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.sm_login {
+    color: #FFFFFF;
+    background-color:#444C60 ;
+    width: 120px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+    .sm_login:hover {
+    background-color: #6D728C;
+    color: #FFFFFF;
+    
+    
+    
+    }
+.lg_login {
+    color: #FFFFFF;
+    background-color:#444C60 ;
+    width: 300px;
+    height: 220px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.hoverbtn {
+    background-color: #6D728C;
+    color: #FFFFFF;
+    width: 80px;
+    height: 40px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+    .hoverbtn:hover {
+    background-color: #FFFFFF;
+    color: #444C60;
+    
+    }
+
+
+.gobackbtn {
+position:absolute;
+color:#FFFFFF;
+background-color:#6D728C;
+z-index:1;
+width:20px;
+height:20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+    .gobackbtn:hover {
+    color:#444C60;
+background-color:#FFFFFF;
+border-color:#444C60;
+    }
