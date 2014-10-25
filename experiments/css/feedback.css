@@ -1,0 +1,79 @@
+﻿body {
+}
+
+.toolbar {
+    width: 250px;
+    margin: 0px auto;
+}
+
+.themecolor {
+    color: #9F9AAF;
+}
+
+.themebgcolor {
+    background-color: #9F9AAF;
+}
+
+.themebcolor {
+    border-color: #9F9AAF;
+}
+
+.themebtn {
+    color: #FFFFFF;
+    background-color: #9F9AAF;
+}
+
+    .themebtn:hover {
+        color: #FFFFFF;
+        background-color: #444C60;
+    }
+
+.sortabletag {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 450px;
+}
+
+.tagli {
+    display: inline;
+    margin: 3px 3px 3px 0;
+    padding: 1px;
+    float: left;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    border-style: solid;
+    border-color: #9F9AAF;
+}
+
+
+.sortabletip {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 450px;
+}
+
+.tipli {
+    display: inline;
+    margin: 3px 3px 3px 0;
+    padding: 1px;
+    float: left;
+    width: 220px;
+    height: 100px;
+    text-align: center;
+    border-style: solid;
+    border-color: #9F9AAF;
+}
+
+
+.btndelete {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    z-index: 1;
+    right: 0;
+    width: 25px;
+    height: 25px;
+}

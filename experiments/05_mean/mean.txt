@@ -2,4 +2,5 @@
 001_meanInit.html							MEAN Init
 002_svcUser.html							User Management
 003_organize.html							Organized codes
+004_multiview.html							Multi-view of svcUser
 mean.txt								The story file for this story

@@ -5,4 +5,5 @@
 004_draggable.html							Draggable
 005_dragSort.html							Sortable
 006_login.html							Login Page
+007_feedback.html							Feedback
 jquery.txt								The story file for this story

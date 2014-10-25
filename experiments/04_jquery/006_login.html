@@ -40,6 +40,84 @@
 
     <div class="showcode">
 
+        <p>This is a single login button which I want to add at the right-top corner of my project's homepage.</p>
+        <p>I don't want to waste entire page to let user login because some user do not want to login when he come to the page for the first time. Like me!</p>
+        <p>For the html, I only have two contianers to to hold the small login sign and the large login window.</p>
+        <xmp>
+            <div class="smcontainer">
+                <button class="btn btn-default sm_login">Sign in</button>
+            </div>
+            <div class="lgcontainer">
+            </div>
+        </xmp>
+        <p>I initialized the small button. When you click it, the whole window would show up.</p>
+        <br />
+        <xmp>
+            function lg_loginHandler() {
+                $(".lg_login").show();
+                if ($(".lgcontainer").hasClass("added") == false) {
+                    var lg_login = '<div class="lg_login"><br /><form role="form"></form></div>';
+                    $(".lgcontainer").append(lg_login).addClass("added");
+                    var inputEmail = '<div><label for="inputEmail" class="col-sm-4 control-label">Email</label><div class="col-sm-6"><input type="email" class="form-control" id="inputEmail" placeholder="Email"></div></div>';
+                    var inputPass = '<div><label for="inputPassword" class="col-sm-4 control-label">Password</label><div class="col-sm-6"><input type="password" class="form-control" id="inputPassword" placeholder="Password"></div></div>';
+                    var checkbox = '<div><div class="col-sm-offset-4 col-sm-10"><div class="checkbox"><label><input type="checkbox"> Remember me</label></div></div></div>';
+                    var submitbtn = '<div><div class="col-sm-offset-4 col-sm-10"><button type="submit" class="btn btn-default hoverbtn">Sign in</button></div></div>';
+                    var x = '<botton class="gobackbtn text-center">x</botton>';
+                    $("form").append(inputEmail);
+                    $("form").append(inputPass);
+                    $("form").append(checkbox);
+                    $("form").append(submitbtn);
+                    $("form").append(x);
+               }
+                $(".sm_login").hide();
+                $(".gobackbtn").click(gobackbtnHandler);
+            }
+        </xmp>
+        <p>This code above is the handler when you clicking the small login button.</p>
+        <p>I use <code>element.show</code> and <code>element.hide</code> to control the visibility of the div.</p>
+        <p>Notice I use a condition to load login page because I do not want to load it every time when I click the button.</p>
+        <xmp>
+            if ($(".lgcontainer").hasClass("added") == false) {...}
+        </xmp>
+        <p>If it has been created, added class <code>added</code> to mark. If this class do not exist, then create all the stuffs.</p>
+        <p>Another reason for avoid the duplication is, I want to store the username and password in the browser, as the user want. If I create a new window each time, I could not use those data and I could not go back.</p>
+        <p>I use form validation for each inputs.</p>
+        <xmp>
+            var inputEmail = '<div><label for="inputEmail" class="col-sm-4 control-label">Email</label><div class="col-sm-6"><input type="email" class="form-control" id="inputEmail" placeholder="Email"></div></div>';
+            var inputPass = '<div><label for="inputPassword" class="col-sm-4 control-label">Password</label><div class="col-sm-6"><input type="password" class="form-control" id="inputPassword" placeholder="Password"></div></div>';
+            var checkbox = '<div><div class="col-sm-offset-4 col-sm-10"><div class="checkbox"><label><input type="checkbox"> Remember me</label></div></div></div>';
+            var submitbtn = '<div><div class="col-sm-offset-4 col-sm-10"><button type="submit" class="btn btn-default hoverbtn">Sign in</button></div></div>';
+            var x = '<botton class="gobackbtn text-center">x</botton>';
+        </xmp>
+        <p>
+            Added a back button when user want to back to the pervious page.
+        </p>
+        <xmp>
+            function gobackbtnHandler() {
+                $(".lg_login").hide();
+                $(".sm_login").show();
+            }
+        </xmp>
+        <p>Show the small login and hide the large verison by simply click the back button.</p>
+        <br />
+        <p>In this experiment, I also designed the css of my buttons and input forms.</p>
+        <p>For example, the small login buttom has hover when your mouse over it. And rounded border.</p>
+        <xmp>
+            .sm_login {
+                color: #FFFFFF;
+                background-color:#444C60 ;
+                width: 120px;
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+                .sm_login:hover {
+                    background-color: #6D728C;
+                    color: #FFFFFF;
+                }
+        </xmp>
+        
     </div>
     <hr />
     <br />

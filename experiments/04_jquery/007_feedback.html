@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>007_feedback</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <link href="../css/feedback.css" rel="stylesheet" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/feedback.js"></script>
+</head>
+<body class="myfont">
+    <div>
+        <h1>Feedback(Leave tips)</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/04_jquery/007_feedback.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/js/feedback.js">Feedback Javascript scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/feedback.css">Feedback CSS scource</a>
+            </li>
+        </ul>
+        <hr />
+    </div>
+
+    <div class="toolbar">
+        <input type="radio" name="gender" id="toolbarTag" value="1" checked />
+        <label for="toolbarTag">Add a Tag</label>
+        <input type="radio" name="gender" id="toolbarTip" value="2" />
+        <label for="toolbarTip">Leave a Tip</label>
+        <button class="btn toolbarAdd themebtn">Add</button>
+    </div>
+
+    <hr class="themecolor themebgcolor themebcolor" />
+
+    <div class="tagtemplatecontainer row">
+        <ul style="list-style: none;" id="sortabletag"></ul>
+    </div>
+
+    <div class="hrcontainer row"></div>
+
+    <div class="tiptemplatecontainer row">
+        <ul style="list-style: none;" id="sortabletip"></ul>
+    </div>
+
+
+    <div class="showcode">
+        <p>This is an experiment about user feedback. I want to build up a website about food and recommendation around our school. Feedback is a very important part of my project. I give users two brief options which is adding a tag, one or two words long, or adding a tip, several sentences.</p>
+        <p>I use radio to collect user's choice: tag or tip. Added lable which could select the option as well. Give value of each option and pass it to create different div for feedback.</p>
+        <xmp>
+            <div class="toolbar">
+                <input type="radio" name="gender" id="toolbarTag" value="1" checked />
+                <label for="toolbarTag">Add a Tag</label>
+                <input type="radio" name="gender" id="toolbarTip" value="2" />
+                <label for="toolbarTip">Leave a Tip</label>
+                <button class="btn toolbarAdd themebtn">Add</button>
+            </div>
+        </xmp>
+        <p>Use<code>var selectedtype = $("input[name='gender']:checked").val();</code> to pass the value.</p>
+        <br />
+        <p>For different choices, I have different containers to put. Like tags, only use small boxs to store, and the div appears on the top of the page. For tips, which could hold paragraph, have a larger div and seperated to tips by a line.</p>
+        <xmp>
+            <div class="tagtemplatecontainer row">
+                <ul style="list-style: none;" id="sortabletag"></ul>
+            </div>
+
+            <div class="hrcontainer row"></div>
+
+            <div class="tiptemplatecontainer row">
+                <ul style="list-style: none;" id="sortabletip"></ul>
+            </div>
+        </xmp>
+        <p>I also set an initial div for <code>hr</code>. I set different conditions to active it.</p>
+        <xmp>
+            if ($(".tiptemplatecontainer").hasClass("added") == true && $(".tagtemplatecontainer").hasClass("added") == false) {
+                var hr = ' <hr class="themecolor themebgcolor themebcolor" />';
+                $(".hrcontainer").append(hr);
+            }
+            if ($(".tiptemplatecontainer").hasClass("added") == false && $(".tagtemplatecontainer").hasClass("added") == true) {
+                var hr = ' <hr class="themecolor themebgcolor themebcolor" />';
+                $(".hrcontainer").append(hr);
+            }
+        </xmp>
+        <p>Well, this works well on different situations, but when you remove all the tags or tips, this line cannot been removed. I will keep working on this bug.</p>
+        <br />
+        <xmp>
+            function addHandler() {
+                var selectedtype = $("input[name='gender']:checked").val();
+                if (selectedtype == 1) {
+                    //add condition to add hr to the page
+                    if ($(".tiptemplatecontainer").hasClass("added") == true && $(".tagtemplatecontainer").hasClass("added") == false) {
+                    var hr = ' <hr class="themecolor themebgcolor themebcolor" />';
+                    $(".hrcontainer").append(hr);
+                }
+                $(".tagtemplatecontainer").addClass("added");
+                var tag = '<li class="tagli">Add tag here</li>';
+                $("#sortabletag").append(tag);
+                $("li.tagli").click(unselectall);
+                $("li.tagli").click(selectone);
+                }
+                else {
+                    //add condition to add hr to the page
+                    if ($(".tiptemplatecontainer").hasClass("added") == false && $(".tagtemplatecontainer").hasClass("added") == true) {
+                        var hr = ' <hr class="themecolor themebgcolor themebcolor" />';
+                        $(".hrcontainer").append(hr);
+                    }
+                    $(".tiptemplatecontainer").addClass("added");
+                    var tip = '<li class="tipli">Add tip here</li>';
+                    $("#sortabletip").append(tip);
+                    $("li.tipli").click(unselectall);
+                    $("li.tipli").click(selectone);
+                };
+            }
+        </xmp>
+        <p>This code above is the handler of Add button. Use <code>if (selectedtype == 1)</code> to check which tpye the user wants to write.</p>
+        <p>When adding div of tag or tip, added a class named <code>added</code> to mark whether this div has data or not.</p>
+        <br />
+        <p>User could click the div to sort and edit. When selecting one div, the div would show a box-shadow to tell the difference. And the delete button would shows as well.</p>
+        <xmp>
+            if (one.hasClass("addbtn"))
+                return;
+        </xmp>
+        <p>First check the div has been selected or not. If so, ignore the follow action. If not been selected, add button, change css.</p>
+        <xmp>
+            function selectone() {
+                var one = $(this);
+                if (one.hasClass("addbtn"))
+                    return;
+                one
+                    .css("box-shadow", "0px 0px 5px #888888")
+                    .attr('contentEditable', 'true')
+                    .addClass("addbtn");
+                var btndelete = '<button class="btn themebtn btndelete">x</button>';
+                $(one).append(btndelete);
+                $(".btndelete").click(deleteHandler);
+            }
+        </xmp>
+        <p>To deal with button shows after clicking the div and clear the box-shadow when change the target, use fucntion unselectall.</p>
+        <xmp>
+            function unselectall() {
+                $("li").css("box-shadow", "0px 0px 0px #888888")
+                    .attr('contentEditable', 'false')
+                    .removeClass("addbtn");
+                $("button.btndelete").remove();
+            }
+        </xmp>
+        <p>Reset the css and remove the delete button.</p>
+        <br />
+
+        <p>An other word about this experiment:</p>
+        <p>I chose <code>ul</code> and <code>li</code> to store the tips and tags because I tried use <code>div</code> and <code>p</code> directly, but they had several problems. They could not apper one by one or I could not sort them easily. So I decided use list.</p>
+        <p>But using list, I could sort them and arrange them, I have to deal with the size and the bullets. I tried use <code>list-style-type: none</code> in css but it did not work. I have to hard code in the tag to avoid the bullets :( </p>
+        <xmp>
+                <ul style="list-style: none;" id="sortabletag"></ul>
+        </xmp>
+        <p>I solve the size problem by edit the css of each <code>li</code>.</p>
+        <xmp>
+            .sortabletip {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 450px;
+            }
+
+            .tipli {
+                display: inline;
+                margin: 3px 3px 3px 0;
+                padding: 1px;
+                float: left;
+                width: 220px;
+                height: 100px;
+                text-align: center;
+                border-style: solid;
+                border-color: #9F9AAF;
+            }
+        </xmp>
+        <p>I would keep working on this one. Hope to fix the bugs soon.</p>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+            <li><a href="http://stackoverflow.com/">Stack Overflow</li>
+        </ul>
+    </div>
+    <hr />
+
+
+
+
+</body>
+</html>
