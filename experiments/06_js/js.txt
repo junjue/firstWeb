@@ -1,5 +1,6 @@
 ﻿../../story/whatisnext.htm?../experiments/06_js/js.txt	What is Next?
 001_formValidation.html							Form Validation
 002_imgChanging.html							Image Changing
-003_likeButton.html							Like Button
+003_likeButton.html								Like Button	
+004_likeAPI.html								Third Party Like API
 js.txt								The story file for this story
