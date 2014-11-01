@@ -4,6 +4,8 @@
     <title>003_likeButton</title>
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <link href="../css/myStyle.css" rel="stylesheet" />
+    <link href="../css/likebutton.css" rel="stylesheet" />
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/likebutton.js"></script>
@@ -28,14 +30,76 @@
         <hr />
     </div>
 
+    <div class="container" align="center">
+        <img id="likeButton" class="likeimg" src="../../images/image/like.png" onmouseover="this.src='../../images/image/likehover2.png'" onmouseout="this.src='../../images/image/like.png'" />
+        <p id="likestatus">Please vote if you like.</p>
+    </div>
 
-    <div>
-        <input type="checkbox" id="likeButton" class="form-control" />
-        <input type="checkbox" id="unlikeButton" class="form-control" />
+    <hr />
+    <br />
+    <div class="showcode">
+        <h4>Code:</h4>
+        <p>In this experiment, I want to use this like button to collect user's feedback. Like buttons are widely used on lots of websites, like facebook and youtube. This is the simplest way to get feedback from users. Especially for lazy guys~ :)</p>
+        <p>I have to say, I drew this thumb up pic and changed color for it in order to match my new homepage. Making my own icons was fun, but took me a lot of time...</p>
+        <br />
+        <p>First, I made hover for this img.</p>
+        <xmp>
+            <img id="likeButton" class="likeimg" src="../../images/image/like.png" onmouseover="this.src='../../images/image/likehover2.png'" onmouseout="this.src='../../images/image/like.png'" />
+        </xmp>
+        <p>Use <code>mouseover</code> and <code>mouseout</code> to change different images for my button.</p>
+        <p>When you clicking, my function <code>likecheckHandler</code> was actived.</p>
+        <xmp>
+            $("#likeButton").click(likecheckHandler);
+        </xmp>
+        <p>Instead of change image in the function, I added a marker to mark the status of clicking. If this is your first clicking, means you want to submit your like, I would add a class named liked to the image. If you've clicked once, you want to cancel your like, I would check the class then remove it.</p>
+        <xmp>
+            function likecheckHandler() {
+                if ($("#likeButton").hasClass("liked") == false) {
+                    var mark = "Liked<br />Thank you<br />You could cancel your like by clicking again";
+                    $("#likeButton").addClass("liked");
+                    checkstatus(mark);
+                }
+                else {
+                    var mark = "removed like<br />You could relike by clicking the button";
+                    $("#likeButton").removeClass("liked");
+                    checkstatus(mark);
+                }
+                checkimg();
+            }
+        </xmp>
+        <p>Notice, I called function checkstatus() after changing the class.</p>
+        <xmp>
+            function checkstatus(mark) {
+                $("#likestatus").empty();
+                $("#likestatus").append(mark);
+            }
+        </xmp>
+        <p>This function is used to change the introduction below the thumb-up image, which gives the status as well. I pass the variable <code>mark</code> into it.</p>
+        <br />
+        <p>At last, I need to change the image when you added the like. I have the class liked which marks the right time to show like and change another image to give reponse to users.</p>
+        <xmp>
+            function checkimg() {
+                if ($("#likeButton").hasClass("liked") == true) {
+                    document.getElementById("likeButton").src = "../../images/image/liked2.png";
+                }
+                else
+                    document.getElementById("likeButton").src = "../../images/image/like.png";
+            }
+        </xmp>
+        <p>Enjoy my sigle implementation of like button~ Thanks!</p>
     </div>
-    <div class="container">
-        <p id="likestatus"></p>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+            <li><a href="http://stackoverflow.com/">Stack Overflow</li>
+        </ul>
     </div>
+    <hr />
+
 
 </body>
 </html>
