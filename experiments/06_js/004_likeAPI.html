@@ -2,23 +2,101 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>004_likeAPI</title>
+
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <link href="../css/myStyle.css" rel="stylesheet" />
+    <link href="../css/likeAPI.css" rel="stylesheet" />
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <script src="../js/jquery-ui.js"></script>
+    <script src="../js/likeAPI.js"></script>
 </head>
+
 <body class="myfont">
-    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-    <div id="fb-root"></div>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=313485655511294&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+    <div>
+        <h1>Like Button API</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/06_js/004_likeAPI.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/js/likeAPI.js">Feedback Javascript scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/likeAPI.css">Feedback CSS scource</a>
+            </li>
+        </ul>
+        <hr />
+    </div>
+    <p class="color">Facebook Like</p>
+    <div class="container" align="center">
+        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/"
+             data-layout="standard" data-action="like" data-show-faces="true" data-share="true">
+        </div>
+    </div>
+    <hr />
+    <p class="color">Twitter Share</p>
+    <div class="container" align="center">
+        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+        <div id="fb-root"></div>
+    </div>
+    <hr />
+    <div class="showcode">
+        <h4>Code:</h4>
+        <p>Here I added some famous like or share APIs into my experiment. Facebook and Twitter are more famous and popular social methods obviously, using their's API is a convenient way to share with friends.</p>
+        <p>First I tried Facebook's API. I use a <code>div</code> to contain the frame.</p>
+        <xmp>
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/"
+                 data-layout="standard" data-action="like" data-show-faces="true" data-share="true">
+            </div>
+        </xmp>
+        <p>Then use javascript to make it alive. This might cost several seconds to lode.</p>
+        <xmp>
+            !function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+            p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+            }(document, 'script', 'twitter-wjs');
+        </xmp>
+        <br />
+        <p>Then I tried Twitter's API. Added an anchor, you could click it to share on twitter. Put in a div as well.</p>
+        <xmp>
+            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+            <div id="fb-root"></div>
+        </xmp>
+        <p>Here below is the script of Twitter's API.</p>
+        <xmp>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) 
+                    return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=313485655511294&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </xmp>
+        <p>From this experiment, I learnt how to include Facebook and Twitter's API to let users to share my website.</p>
+        <p>This is different with the other experiment about like button, which is simply by clicking the thumb-up button.</p>
+        <p>They would be used in different situations.</p>
+    </div>
+    <hr />
+    <br />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+            <li><a href="http://stackoverflow.com/">Stack Overflow</li>
+        </ul>
+    </div>
+    <hr />
 </body>
 </html>
