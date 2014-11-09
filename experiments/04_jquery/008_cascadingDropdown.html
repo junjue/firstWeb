@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>008_cascadingDropdown</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
+    <script type="text/javascript" src="../js/cascadingdropdown.js"></script>
+    <script type="text/javascript" src="../js/mockjax.js"></script>
+    <script type="text/javascript" src="../js/ajax-mocks.js"></script>
+</head>
+<body>
+    <div id="cascading-dropdown" class="bs-docs-example">
+        <select class="step1" name="screen">
+            <option value="">Screen size</option>
+            <option value="4">4.0"</option>
+            <option value="4.3">4.3"</option>
+            <option value="4.7">4.7"</option>
+            <option value="5">5.0"</option>
+        </select>
+        <select class="step2" name="resolution">
+            <option value="">Screen resolution</option>
+            <option value="540" selected>540p</option>
+            <option value="720">720p</option>
+            <option value="1080">1080p</option>
+        </select>
+        <select class="step3" name="storage">
+            <option value="">Storage size</option>
+            <option value="8">8 GB</option>
+            <option value="16">16 GB</option>
+            <option value="32">32 GB</option>
+            <option value="64">64 GB</option>
+        </select>
+
+        <h4>Matches <img src="../../images/image/ajax-loader.gif" data-bind="visible: loading" /></h4>
+        <ul data-bind="foreach: phones, visible: phones().length > 0">
+            <li>
+                <span data-bind="text: maker"></span>
+                <span data-bind="text: model"></span>
+            </li>
+        </ul>
+        <p data-bind="visible: phones().length == 0">No matches</p>
+    </div>
+
+    <script>
+        function viewmodel() {
+            this.phones = ko.observableArray([]);
+            this.loading = ko.observable(false);
+        }
+
+        var example1 = new viewmodel();
+
+        ko.applyBindings(example1, document.getElementById('cascading-dropdown'));
+
+        // Example 1
+        $('#cascading-dropdown').cascadingDropdown({
+            selectBoxes: [
+                {
+                    selector: '.step1',
+                    selected: '4.3'
+                },
+                {
+                    selector: '.step2',
+                    requires: ['.step1']
+                },
+                {
+                    selector: '.step3',
+                    requires: ['.step1', '.step2'],
+                    onChange: function (event, value, requiredValues, requirementsMet) {
+                        if (!requirementsMet) return;
+
+                        example1.loading(true);
+
+                        var ajaxData = requiredValues;
+                        ajaxData[this.el.attr('name')] = value;
+                        $.getJSON('/api/phones', ajaxData, function (data) {
+                            example1.phones(data);
+                            example1.loading(false);
+                        });
+                    }
+                }
+            ]
+        });
+    </script>
+
+    <div class="showcode">
+        <h4>Code:</h4>
+        <xmp>
+            <script>
+                $(document).ready(function () {
+                    $(".btnslideup").click(function () {
+                        $("#img1").slideUp();
+                    });
+                    $(".btnslidedown").click(function () {
+                        $("#img1").slideDown();
+                    });
+                });
+            </script>
+        </xmp>
+    </div>
+    <hr />
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+        </ul>
+    </div>
+    
+
+</body>
+</html>
