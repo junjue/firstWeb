@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>008_datafilter</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="http://listjs.com/no-cdn/list.js"></script>
+    <script src="http://listjs.com/no-cdn/list.fuzzysearch.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+    <link href="../css/filter.css" rel="stylesheet" />
+</head>
+<body class="myfont">
+    <div>
+        <h1>Filter of a List</h1>
+        <ul>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/04_jquery/008_datafilter.html">Page scource</a>
+            </li>
+            <li>
+                <a href="../../fileview/Default.aspx?~/experiments/css/myStyle.css">CSS scource</a>
+            </li>
+            <li>
+                <a href="http://listjs.com/no-cdn/list.js">ListJS scource</a>
+            </li>
+            <li>
+                <a href="http://listjs.com/no-cdn/list.fuzzysearch.js">List Fuzzysearch scource</a>
+            </li>
+        </ul>
+        <hr />
+    </div>
+
+    <div class="container" id="test-list">
+        <input type="text" class="fuzzy-search form-control" placeholder="Search..." />
+        <ul class="list">
+            <li><p class="name">Kigo Kitchen</p></li>
+            <li><p class="name">On The Go</p></li>
+            <li><p class="name">Popeyes Louisiana Kitchen</p></li>
+            <li><p class="name">Starbucks</p></li>
+            <li><p class="name">Sweet Tomatoes Pizza</p></li>
+            <li><p class="name">Taco Bell Express</p></li>
+            <li><p class="name">The West End</p></li>
+            <li><p class="name">UBurger</p></li>
+        </ul>
+    </div>
+    <hr />
+
+    <div class="showcode">
+        <h4>Code</h4>
+        <p>In this experiment, I added a input filed which could works as a filter.</p>
+        <p>Now this list has only 8 items, but if this list grows longer, it would be harder to find the item you want.</p>
+        <p>By this filter, user could quickly find the item by input some key words, and the result would change with the input or backspace.</p>
+        <br />
+        <p>In the html, I use <code>ul</code> to contain the data. <code>input</code> to hold the user's input. Give specified class to each tag.</p>
+        <xmp>
+            <div class="" id="test-list">
+                <input type="text" class="fuzzy-search form-control" placeholder="Search..." />
+                <ul class="list">
+                    <li><p class="name">Kigo Kitchen</p></li>
+                    <li><p class="name">On The Go</p></li>
+                    <li><p class="name">Popeyes Louisiana Kitchen</p></li>
+                    <li><p class="name">Starbucks</p></li>
+                    <li><p class="name">Sweet Tomatoes Pizza</p></li>
+                    <li><p class="name">Taco Bell Express</p></li>
+                    <li><p class="name">The West End</p></li>
+                    <li><p class="name">UBurger</p></li>
+                </ul>
+            </div>
+        </xmp>
+        <p>Then use list.js and list.fuzzysearch.js to achieve the aim to filter the data by input.</p>
+        <p>Active the plug-in:</p>
+        <xmp>
+            <script>
+                var monkeyList = new List('test-list', {
+                    valueNames: ['name'],
+                    plugins: [ListFuzzySearch()]
+                });
+            </script>
+        </xmp>
+        <p>The default search will conduct a time efficient search for an exact match in the content searched, while this one will render results depending on if they are included anywhere in the content.</p>
+
+    </div>
+    <hr />
+
+    <div class="showref">
+        <h4>References</h4>
+        <ul>
+            <li><a href="http://net4.ccs.neu.edu/home/jga/">Professor Annunziato's Lecture</a></li>
+            <li><a href="http://www.w3schools.com/">W3Schools</a></li>
+            <li><a href="http://stackoverflow.com/">Stack Overflow</a></li>
+            <li><a href="http://www.listjs.com/">ListJS</a></li>
+        </ul>
+    </div>
+    <hr />
+
+    <script>
+        var monkeyList = new List('test-list', {
+            valueNames: ['name'],
+            plugins: [ListFuzzySearch()]
+        });
+    </script>
+</body>
+</html>
