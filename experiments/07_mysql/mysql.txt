@@ -1,0 +1,3 @@
+﻿../../story/whatisnext.htm?../experiments/07_mysql/mysql.txt	What is Next?
+001_connectMySQL.html							Connect to MySQL
+mysql.txt								The story file for this story

@@ -6,4 +6,5 @@
 005_dragSort.html							Sortable
 006_login.html							Login Page
 007_feedback.html							Feedback
+008_datafilter.html							Filter
 jquery.txt								The story file for this story
